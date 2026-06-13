@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sonder Operations — Brand Guidelines</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<template id="__bundler_thumbnail" data-bg-color="#859473">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="78" fill="none" stroke="#efeae1" stroke-width="4"/>
+    <path d="M 100 22 C 142 22, 162 58, 140 92 C 128 110, 110 108, 100 100 C 90 92, 72 90, 60 108 C 38 142, 58 178, 100 178"
+          fill="none" stroke="#efeae1" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</template>
+<style>
+  :root {
+    --sage:      #859473;
+    --sage-80:   #a7b297;
+    --sage-60:   #c2cbb6;
+    --sage-30:   #e0e5d8;
+    --sage-10:   #f3f5ee;
+    --ivory:     #efeae1;
+    --paper:     #f8f5ee;
+    --evergreen: #2d3d32;
+    --evergreen-80: #4c5b50;
+    --stone:     #7b7b73;
+    --stone-40:  #c8c7c1;
+    --navy:      #1f2451;
+    --tan:       #d4b89c;
+    --ink:       #2a2e29;
+    --rule:      rgba(45,61,50,0.18);
+    --rule-soft: rgba(45,61,50,0.10);
+
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  html, body { margin:0; padding:0; }
+  body {
+    background: #d8ddcd;
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ Logo (real assets) ============ */
+  /* logo-full.png and logo-icon.png are pure-black PNGs with a transparent
+     background. We flip them to ivory using filter: invert(1) on dark surfaces. */
+  .logo {
+    display: block;
+    background: no-repeat center / contain;
+    width: 100%;
+  }
+  .logo.full { background-image: url('assets/logo-full.png'); aspect-ratio: 1/1; }
+  .logo.icon { background-image: url('assets/logo-icon.png'); aspect-ratio: 1/1; }
+  .logo.light { filter: none; }            /* black ink, default */
+  .logo.ivory { filter: invert(1); }       /* white-ish ink for dark bg */
+  /* Sage-on-ivory ink (for "logo color palette" specimen squares only) */
+  .logo.sage {
+    filter: invert(56%) sepia(11%) saturate(644%) hue-rotate(45deg) brightness(94%) contrast(86%);
+  }
+
+  /* ============ Page shell ============ */
+  .doc {
+    max-width: 1320px;
+    margin: 60px auto;
+    padding: 0 40px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .page {
+    background: var(--paper);
+    box-shadow: 0 20px 60px rgba(45,61,50,0.18), 0 2px 6px rgba(45,61,50,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .page.tall { aspect-ratio: 1 / 1.294; }
+  .page.wide { aspect-ratio: 1.55 / 1; }
+
+  .page-pad { padding: 64px 72px; box-sizing: border-box; height: 100%; }
+
+  .pagefoot {
+    position: absolute;
+    left: 72px; right: 72px; bottom: 28px;
+    display: flex; justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* ============ Type primitives ============ */
+  .eyebrow {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  h1.section {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    margin: 0 0 12px;
+  }
+  h1.section em, .lede em, .toc h1 em { font-style: italic; }
+  .lede {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--evergreen-80);
+    max-width: 56ch;
+    margin: 0;
+  }
+  p.body {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--evergreen);
+    max-width: 62ch;
+    margin: 0;
+  }
+  .label {
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--evergreen);
+  }
+  .meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--stone);
+    text-transform: uppercase;
+  }
+
+  .rule-title {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 28px;
+  }
+  .rule-title .line { height: 1px; background: currentColor; opacity: 0.5; }
+  .rule-title .t {
+    font-size: 13px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+  }
+
+  hr.thin { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+  /* ============ Cover ============ */
+  .cover { background: var(--sage); color: var(--ivory); }
+  .cover .page-pad {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .cover .top, .cover .bot { display:flex; justify-content: space-between; align-items: center; }
+  .cover .mid { display:flex; flex-direction:column; justify-content:center; align-items:center; gap: 32px; }
+  .cover .mid .logo { width: 380px; }
+  .cover .mid .kicker {
+    font-size: 12px;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    padding: 14px 0;
+    border-top: 1px solid rgba(239,234,225,0.45);
+    border-bottom: 1px solid rgba(239,234,225,0.45);
+    min-width: 360px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .cover .bot { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.88; }
+  .cover .bot > div:nth-child(2) { text-align: center; }
+  .cover .bot > div:nth-child(3) { text-align: right; }
+
+  /* ============ TOC ============ */
+  .toc .page-pad { display: grid; grid-template-rows: auto 1fr auto; gap: 40px; }
+  .toc h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 88px;
+    line-height: 1;
+    margin: 0;
+    color: var(--evergreen);
+  }
+  .toc-row {
+    display:grid; grid-template-columns: 50px 1fr 60px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+    gap: 24px;
+  }
+  .toc-row:last-child { border-bottom: 1px solid var(--rule); }
+  .toc-row .num { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 28px; color: var(--sage); }
+  .toc-row .tt { font-family: var(--serif); font-weight: 300; font-size: 36px; color: var(--evergreen); }
+  .toc-row .tt em { font-style: italic; }
+  .toc-row .pg { font-size: 12px; letter-spacing: 0.18em; color: var(--stone); text-align:right; }
+
+  /* ============ Brand Board ============ */
+  .board .page-pad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px;
+  }
+  .board .col { display:flex; flex-direction:column; gap: 28px; }
+  .board h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    margin: 0 0 6px;
+    color: var(--evergreen);
+    text-align: center;
+  }
+  .board .titlewrap { text-align: center; }
+  .board .titlewrap hr { border:none; border-top:1px solid var(--rule); margin: 14px 0 0; }
+  .board .hero-mark { display:flex; align-items:center; justify-content:center; padding: 8px 0 4px; }
+  .board .hero-mark .logo { width: 78%; }
+
+  .board .palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .board .swatch { display:flex; flex-direction:column; gap:8px; }
+  .board .swatch .chip { aspect-ratio: 1.3 / 1; border: 1px solid var(--rule-soft); }
+  .board .swatch .nm { font-size: 12px; font-weight: 600; color: var(--evergreen); }
+  .board .swatch .hex { font-size: 9.5px; letter-spacing: 0.08em; color: var(--stone); text-transform: uppercase; }
+
+  .board .specimen { display:flex; flex-direction:column; align-items:center; gap: 14px; }
+  .board .specimen .label-tiny { font-size: 9.5px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--stone); }
+  .board .specimen .typesample { font-family: var(--serif); font-weight: 300; font-size: 72px; line-height: 1; color: var(--evergreen); letter-spacing: 0.04em; }
+  .board .specimen .typesample em { font-style: italic; }
+  .board .specimen .sansample {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--evergreen);
+  }
+  .board .specimen .meta-row { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+
+  .board .variations { display:flex; flex-direction:column; gap: 28px; align-items:center; }
+  .board .variations .full { width: 80%; }
+  .board .variations .stacked { width: 55%; }
+
+  .board .onColor { display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .board .onColor .oc { display:flex; flex-direction:column; gap: 8px; }
+  .board .onColor .oc .square { aspect-ratio:1; display:flex; align-items:center; justify-content:center; border: 1px solid var(--rule-soft); padding: 16%; box-sizing: border-box; }
+  .board .onColor .oc .nm { font-size: 11px; font-weight: 600; color: var(--evergreen); }
+  .board .onColor .oc .hex { font-size: 9.5px; letter-spacing: 0.08em; color: var(--stone); text-transform: uppercase; }
+
+  .board .iconRow { display:flex; align-items:center; gap: 20px; }
+  .board .iconRow .pair { display:flex; flex-direction:column; gap:10px; align-items:center; flex: 1; }
+  .board .iconRow .pair .logo { width: 80px; }
+  .board .iconRow .pair .lbl { font-size: 9.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--evergreen); }
+  .board .iconRow .sq { flex: 1; aspect-ratio:1; background: var(--evergreen); display:flex; align-items:center; justify-content:center; padding: 18%; box-sizing: border-box; }
+  .board .iconRow .sq .logo { width: 100%; }
+
+  .board .guidegrid { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .board .guidecard { display:flex; flex-direction:column; gap: 8px; }
+  .board .guidecard .ill { width: 100%; aspect-ratio: 1.15/1; display:flex; align-items:center; justify-content:center; position:relative; border: 1px solid var(--rule-soft); padding: 14px; box-sizing: border-box; background: var(--ivory); }
+  .board .guidecard .cap { font-size: 10.5px; line-height: 1.45; color: var(--evergreen); }
+  .board .guidecard .cap .strong { font-weight: 600; }
+
+  /* ============ Generic ============ */
+  .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .grid-3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .stack-8 { display:flex; flex-direction:column; gap: 8px; }
+  .stack-12 { display:flex; flex-direction:column; gap: 12px; }
+  .stack-16 { display:flex; flex-direction:column; gap: 16px; }
+  .stack-24 { display:flex; flex-direction:column; gap: 24px; }
+  .stack-40 { display:flex; flex-direction:column; gap: 40px; }
+
+  /* ============ Logo system page ============ */
+  .logo-system .page-pad { display:grid; grid-template-rows: auto auto auto auto auto 1fr auto; gap: 28px; }
+  .logo-hero {
+    background: var(--sage);
+    aspect-ratio: 2.6 / 1;
+    display:flex; align-items:center; justify-content:center;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  .logo-hero .logo { width: 32%; }
+
+  .lockup-row { display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .lockup {
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    padding: 14%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .lockup.ivory { background: var(--ivory); }
+  .lockup.sage  { background: var(--sage); }
+  .lockup.green { background: var(--evergreen); }
+  .lockup .logo { width: 100%; }
+  .lockup.icononly .logo { width: 55%; }
+  .lockup .cap {
+    position: absolute; bottom: 14px; left: 0; right: 0;
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: currentColor; opacity: 0.7; text-align: center;
+  }
+  .lockup.ivory .cap { color: var(--evergreen); }
+  .lockup.sage  .cap, .lockup.green .cap { color: var(--ivory); }
+
+  /* ============ Color page ============ */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .color-card { display:flex; flex-direction:column; gap: 14px; }
+  .color-card .chip {
+    height: 240px;
+    border: 1px solid var(--rule-soft);
+  }
+  .color-card .nm { font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--evergreen); }
+  .color-card .kv { display:grid; grid-template-columns: 60px 1fr; gap: 4px 16px; font-size: 11.5px; color: var(--evergreen); line-height: 1.5;}
+  .color-card .kv .k { color: var(--stone); letter-spacing: 0.18em; text-transform: uppercase; font-size: 10px; align-self: center; }
+
+  .tints { display:grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+  .tints .t { height: 80px; display:flex; align-items: flex-end; padding: 8px 10px; font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--evergreen); }
+
+  .ratio-row { display:grid; grid-template-columns: 6fr 3fr 2fr 1fr; height: 56px; border: 1px solid var(--rule-soft); }
+  .ratio-row > div { display:flex; align-items:center; justify-content:center; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* ============ Type page ============ */
+  .type-hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .type-hero .big {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 220px;
+    line-height: 0.85;
+    color: var(--evergreen);
+    letter-spacing: -0.02em;
+  }
+  .type-hero .big em { font-style: italic; }
+  .type-spec {
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    display:flex; flex-direction: column; gap: 8px;
+  }
+  .type-spec .name { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 28px; color: var(--evergreen); }
+  .type-spec .row { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+
+  .specimen-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--rule-soft); }
+  .specimen-row .lab { font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); }
+  .specimen-row .smp { color: var(--evergreen); }
+  .smp.serif-300-64 { font-family: var(--serif); font-weight: 300; font-size: 64px; line-height: 1; }
+  .smp.serif-400-40 { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1.05; }
+  .smp.serif-i-400-28 { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 28px; line-height: 1.05; }
+  .smp.sans-700-20 { font-weight: 700; font-size: 20px; letter-spacing: 0.02em; }
+  .smp.sans-500-13u { font-weight: 500; font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; }
+  .smp.sans-400-15 { font-weight: 400; font-size: 15px; line-height: 1.6; }
+  .smp.sans-400-12 { font-weight: 400; font-size: 12px; line-height: 1.65; color: var(--evergreen-80); }
+
+  .alphabet { font-family: var(--serif); font-weight: 300; font-size: 32px; color: var(--evergreen); letter-spacing: 0.04em; line-height: 1.25; }
+  .alphabet .small { display:block; font-size: 24px; }
+  .alphabet .num { display:block; font-weight: 400; font-size: 26px; }
+
+  /* ============ Applications ============ */
+  .apps-grid { display:grid; grid-template-columns: 1.25fr 1fr; gap: 28px; }
+  .apps-grid .col { display:flex; flex-direction:column; gap: 24px; }
+  .mock { background: var(--ivory); border: 1px solid var(--rule-soft); overflow:hidden; position:relative; }
+
+  .biz-card { aspect-ratio: 1.75/1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 18px; background: var(--sage); color: var(--ivory); padding: 6% 8%; box-sizing: border-box; }
+  .biz-card .logo { width: 35%; }
+  .biz-card .name { font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase; text-align: center;}
+  .biz-card .name span { display:block; font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.02em; text-transform: none; opacity: 0.9; margin-top: 2px; }
+
+  .letterhead { aspect-ratio: 0.77 / 1; padding: 24px 26px; box-sizing: border-box; background: var(--paper); display:flex; flex-direction:column; gap: 16px; }
+  .letterhead .head { display:flex; justify-content:space-between; align-items:center; }
+  .letterhead .head .logo { width: 14%; }
+  .letterhead .head .right { text-align:right; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); line-height: 1.7; }
+  .letterhead .body-lines { display:flex; flex-direction:column; gap: 6px; }
+  .letterhead .body-lines span { display:block; height: 5px; background: var(--stone-40); opacity: 0.45; border-radius: 2px; }
+  .letterhead .body-lines span.short { width: 60%; }
+  .letterhead .foot { margin-top:auto; display:flex; justify-content:center; }
+  .letterhead .foot .logo { width: 22%; }
+
+  .social { aspect-ratio: 1/1; background: var(--evergreen); display:flex; align-items:center; justify-content:center; flex-direction:column; gap: 18px; color: var(--ivory); padding: 12%; box-sizing: border-box;}
+  .social .logo { width: 50%; }
+  .social .title { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 22px; text-align:center; }
+  .social .tag { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; padding-top: 12px; border-top: 1px solid rgba(239,234,225,0.4); align-self: stretch; text-align:center; }
+
+  .stamp { aspect-ratio: 1/1; border: 1.5px solid var(--evergreen); border-radius: 50%; display:flex; align-items:center; justify-content:center; flex-direction:column; gap: 10px; color: var(--evergreen); background: var(--paper); padding: 22%; box-sizing: border-box;}
+  .stamp .logo { width: 70%; }
+  .stamp .est { font-size: 9px; letter-spacing: 0.34em; text-transform: uppercase; }
+
+  /* Don't markers */
+  .donot {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 52px; height: 52px; border: 2px solid var(--evergreen); border-radius: 50%;
+    background: var(--paper); display:flex; align-items:center; justify-content:center;
+  }
+  .donot svg { width: 28px; height: 28px; color: var(--evergreen); }
+
+  /* Clear-space illustration */
+  .clearspace {
+    width: 100%; aspect-ratio: 1.05/1;
+    position: relative;
+    background: var(--ivory);
+    border: 1px solid var(--rule-soft);
+  }
+  .clearspace .frame {
+    position: absolute; inset: 16%;
+    border: 1px dashed var(--rule);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .clearspace .frame .logo { width: 70%; }
+  .clearspace .tag {
+    position: absolute; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--stone);
+  }
+  .clearspace .tag.top { top: 6%; left: 50%; transform: translateX(-50%); }
+  .clearspace .tag.left { left: 6%; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+  .clearspace .tag.right { right: 6%; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center; }
+  .clearspace .tag.bottom { bottom: 6%; left: 50%; transform: translateX(-50%); }
+  .clearspace .marker {
+    position: absolute; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 16px; color: var(--sage);
+  }
+  .clearspace .marker.tl { top: 16%; left: 16%; transform: translate(-50%, -50%); }
+  .clearspace .marker.tr { top: 16%; right: 16%; transform: translate(50%, -50%); }
+  .clearspace .marker.bl { bottom: 16%; left: 16%; transform: translate(-50%, 50%); }
+  .clearspace .marker.br { bottom: 16%; right: 16%; transform: translate(50%, 50%); }
+
+  /* Min sizes */
+  .minsizes { display:flex; align-items: flex-end; justify-content: center; gap: 32px; padding: 24px; background: var(--ivory); border: 1px solid var(--rule-soft); height: 100%; box-sizing: border-box; }
+  .minsizes .ms { display:flex; flex-direction:column; gap: 10px; align-items: center; }
+  .minsizes .ms .logo { width: var(--w); }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .doc { margin: 0; padding: 0; max-width: none; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; aspect-ratio: auto; height: 100vh; }
+    .page.wide { height: auto; min-height: 100vh; }
+  }
+
+  @media (max-width: 900px) {
+    .doc { padding: 0 16px 40px; margin: 16px auto; }
+    .page-pad { padding: 32px 28px; }
+    .type-hero .big { font-size: 120px; }
+    .color-grid { grid-template-columns: 1fr 1fr; }
+    .toc h1 { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="doc" data-screen-label="Sonder Brand Guidelines">
+
+  <!-- 01 — COVER -->
+  <section class="page tall cover" data-screen-label="01 Cover">
+    <div class="page-pad">
+      <div class="top">
+        <div class="eyebrow" style="opacity:0.85;">Sonder Operations</div>
+        <div class="eyebrow" style="opacity:0.85;">Vol. 01 · 2026</div>
+      </div>
+
+      <div class="mid">
+        <div class="logo full ivory"></div>
+        <div class="kicker">Brand &nbsp;·&nbsp; Identity &nbsp;·&nbsp; Guidelines</div>
+      </div>
+
+      <div class="bot">
+        <div>Internal Reference</div>
+        <div>Issued 20 · May · 2026</div>
+        <div>Draft v1</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — CONTENTS -->
+  <section class="page tall toc" data-screen-label="02 Contents">
+    <div class="page-pad">
+      <div class="stack-24">
+        <div class="eyebrow" style="color:var(--stone);">Contents</div>
+        <h1>A guide to <em>Sonder</em><br>Operations.</h1>
+        <p class="lede">A short book of standards for the marks, palette, and typography that carry our name — written so anyone using the brand can do so with confidence and consistency.</p>
+      </div>
+
+      <div>
+        <div class="toc-row"><div class="num">01</div><div class="tt"><em>The</em> Brand Board</div><div class="pg">p. 03</div></div>
+        <div class="toc-row"><div class="num">02</div><div class="tt">Logo System</div><div class="pg">p. 04</div></div>
+        <div class="toc-row"><div class="num">03</div><div class="tt">Logo <em>Usage</em></div><div class="pg">p. 05</div></div>
+        <div class="toc-row"><div class="num">04</div><div class="tt">Color Palette</div><div class="pg">p. 06</div></div>
+        <div class="toc-row"><div class="num">05</div><div class="tt">Typography</div><div class="pg">p. 07</div></div>
+        <div class="toc-row"><div class="num">06</div><div class="tt">Applications</div><div class="pg">p. 08</div></div>
+      </div>
+
+      <div class="pagefoot" style="color:var(--evergreen);">
+        <span>Sonder Operations</span>
+        <span>Contents</span>
+        <span>02</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — BRAND BOARD -->
+  <section class="page wide board" data-screen-label="03 Brand Board">
+    <div class="page-pad">
+
+      <!-- LEFT -->
+      <div class="col">
+        <div class="titlewrap">
+          <div class="label" style="letter-spacing:.4em;">SONDER OPERATIONS</div>
+          <hr/>
+        </div>
+
+        <div class="hero-mark">
+          <div class="logo full light"></div>
+        </div>
+
+        <hr class="thin"/>
+
+        <div class="stack-16">
+          <h3>Color Palette</h3>
+          <div class="palette">
+            <div class="swatch">
+              <div class="chip" style="background:var(--sage);"></div>
+              <div class="nm">Sage Green</div>
+              <div class="hex">#859473</div>
+              <div class="hex">RGB 133·148·115</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:var(--ivory);"></div>
+              <div class="nm">Warm Ivory</div>
+              <div class="hex">#EFEAE1</div>
+              <div class="hex">RGB 239·234·225</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:var(--evergreen);"></div>
+              <div class="nm">Dark Evergreen</div>
+              <div class="hex">#2D3D32</div>
+              <div class="hex">RGB 45·61·50</div>
+            </div>
+            <div class="swatch">
+              <div class="chip" style="background:var(--stone);"></div>
+              <div class="nm">Stone</div>
+              <div class="hex">#7B7B73</div>
+              <div class="hex">RGB 123·123·115</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="thin"/>
+
+        <div class="stack-12">
+          <h3 style="margin-bottom:0;">Typography</h3>
+          <div class="specimen">
+            <div class="label-tiny">Display · Cormorant Garamond</div>
+            <div class="typesample">Aa <em>Bb</em></div>
+            <div class="label-tiny" style="margin-top:6px;">Body · Source Sans 3</div>
+            <div class="sansample">Sonder · 0123</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MID -->
+      <div class="col">
+        <div class="titlewrap">
+          <h3 style="font-size:28px;">Logo Variations</h3>
+          <hr/>
+        </div>
+
+        <div class="variations">
+          <div class="full"><div class="logo full light"></div></div>
+          <div class="stacked"><div class="logo icon light"></div></div>
+        </div>
+
+        <hr class="thin"/>
+
+        <div class="stack-16">
+          <h3>Logo Anatomy</h3>
+          <p class="body" style="text-align:center; font-size:12.5px; max-width:none;">
+            The mark is an open circle bisected by a stylised
+            <em style="font-family:var(--serif); font-size:14px;">S</em> — a
+            soft contour that reads as both letterform and the meeting of two
+            halves. The wordmark sits below in widely tracked serif capitals,
+            with “Operations” as a quiet subscript.
+          </p>
+          <div class="meta-row" style="font-size:9.5px; letter-spacing:0.32em; text-align:center; color:var(--stone); text-transform:uppercase;">
+            Source Sans 3 · Cormorant Garamond
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col">
+        <div class="titlewrap">
+          <h3 style="font-size:28px;">Logo on Color</h3>
+          <hr/>
+        </div>
+
+        <div class="onColor">
+          <div class="oc">
+            <div class="square" style="background:var(--sage);">
+              <div class="logo full ivory"></div>
+            </div>
+            <div class="nm">Sage Green</div>
+            <div class="hex">#859473</div>
+          </div>
+          <div class="oc">
+            <div class="square" style="background:var(--ivory);">
+              <div class="logo full light"></div>
+            </div>
+            <div class="nm">Warm Ivory</div>
+            <div class="hex">#EFEAE1</div>
+          </div>
+          <div class="oc">
+            <div class="square" style="background:var(--evergreen);">
+              <div class="logo full ivory"></div>
+            </div>
+            <div class="nm">Dark Evergreen</div>
+            <div class="hex">#2D3D32</div>
+          </div>
+        </div>
+
+        <hr class="thin"/>
+
+        <div class="stack-16">
+          <h3>Icon Only</h3>
+          <div class="iconRow">
+            <div class="pair">
+              <div class="logo icon light"></div>
+              <div class="lbl">On Light</div>
+            </div>
+            <div class="sq">
+              <div class="logo icon ivory"></div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="thin"/>
+
+        <div class="stack-16">
+          <h3>Brand Guides</h3>
+          <div class="guidegrid">
+            <div class="guidecard">
+              <div class="ill">
+                <div class="logo icon light" style="width:60%;"></div>
+              </div>
+              <div class="cap"><span class="strong">Clear space</span> — maintain margin equal to the height of the “S” on all sides.</div>
+            </div>
+            <div class="guidecard">
+              <div class="ill">
+                <div class="logo full light" style="width:70%; transform: scaleX(1.4); transform-origin:center;"></div>
+                <div class="donot">
+                  <svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+              </div>
+              <div class="cap"><span class="strong">Do not stretch,</span> distort, or recolor the mark outside the approved palette.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>01 · Brand Board</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>03</span>
+    </div>
+  </section>
+
+  <!-- 04 — LOGO SYSTEM -->
+  <section class="page tall logo-system" data-screen-label="04 Logo System">
+    <div class="page-pad">
+
+      <div class="stack-12">
+        <div class="eyebrow" style="color:var(--stone);">02 · Logo System</div>
+        <h1 class="section">The Mark.</h1>
+        <p class="lede">A circular crest divided by an S-curve — quiet, considered, complete. The wordmark sits below in measured capitals, with an italic descriptor that softens the geometry.</p>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Primary Logo</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="logo-hero">
+        <div class="logo full ivory"></div>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Lockups &amp; Variations</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="lockup-row">
+        <div class="lockup ivory">
+          <div class="logo full light"></div>
+          <div class="cap">Primary · On Light</div>
+        </div>
+        <div class="lockup sage">
+          <div class="logo full ivory"></div>
+          <div class="cap">Reversed · On Sage</div>
+        </div>
+        <div class="lockup green icononly">
+          <div class="logo icon ivory"></div>
+          <div class="cap">Icon Only · On Dark</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>02 · Logo System</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>04</span>
+    </div>
+  </section>
+
+  <!-- 05 — LOGO USAGE -->
+  <section class="page tall" data-screen-label="05 Logo Usage">
+    <div class="page-pad stack-40">
+
+      <div class="stack-12">
+        <div class="eyebrow" style="color:var(--stone);">03 · Logo Usage</div>
+        <h1 class="section">Clear space, <em>protection</em>.</h1>
+        <p class="lede">Give the mark room to breathe. The exclusion zone is measured by the cap-height of the “S” in the wordmark — never less, ideally more.</p>
+      </div>
+
+      <div class="grid-2" style="gap:40px;">
+        <div class="stack-16">
+          <div class="label">Clear Space</div>
+          <div class="clearspace">
+            <div class="frame">
+              <div class="logo full light"></div>
+            </div>
+            <div class="marker tl">S</div>
+            <div class="marker tr">S</div>
+            <div class="marker bl">S</div>
+            <div class="marker br">S</div>
+            <div class="tag top">↕ S height</div>
+            <div class="tag bottom">↕ S height</div>
+            <div class="tag left">↔ S width</div>
+            <div class="tag right">↔ S width</div>
+          </div>
+          <p class="body">Use the height of the letter “S” as a minimum margin on all four sides of the lockup. In tight applications — favicons, badges, social avatars — the icon-only mark may be used in place of the full lockup.</p>
+        </div>
+
+        <div class="stack-16">
+          <div class="label">Minimum Sizes</div>
+          <div class="minsizes">
+            <div class="ms"><div class="logo icon light" style="--w:24px;"></div><div class="meta">16 PX · DIGITAL</div></div>
+            <div class="ms"><div class="logo icon light" style="--w:56px;"></div><div class="meta">32 PX · UI</div></div>
+            <div class="ms"><div class="logo full light" style="--w:140px;"></div><div class="meta">24 PT · PRINT</div></div>
+          </div>
+          <p class="body">The icon may shrink to 16 px; the full lockup should not appear smaller than 24 pt in print or 96 px in digital. Below those sizes, switch to the icon-only mark.</p>
+        </div>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Misuses</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="grid-3">
+        <div class="stack-12">
+          <div class="mock" style="aspect-ratio: 1.3/1; display:flex; align-items:center; justify-content:center; padding: 12%; box-sizing: border-box;">
+            <div class="logo full light" style="transform: scaleX(1.6); transform-origin:center;"></div>
+            <div class="donot">
+              <svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <div class="label">Don't · Stretch</div>
+          <p class="body">Never distort the proportions of the mark by scaling on one axis.</p>
+        </div>
+
+        <div class="stack-12">
+          <div class="mock" style="aspect-ratio: 1.3/1; display:flex; align-items:center; justify-content:center; padding: 12%; box-sizing: border-box; background: linear-gradient(135deg, #ff7e7e, #6f8bff);">
+            <div class="logo full ivory"></div>
+            <div class="donot">
+              <svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <div class="label">Don't · Recolor</div>
+          <p class="body">Use only the approved palette. No gradients, no off-brand color.</p>
+        </div>
+
+        <div class="stack-12">
+          <div class="mock" style="aspect-ratio: 1.3/1; display:flex; align-items:center; justify-content:center; padding: 12%; box-sizing: border-box; background: repeating-linear-gradient(45deg, #c8b89a 0 10px, #b9a78a 10px 20px);">
+            <div class="logo full light"></div>
+            <div class="donot">
+              <svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="4" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+          </div>
+          <div class="label">Don't · Bury</div>
+          <p class="body">Avoid placing the mark on busy backgrounds or low-contrast surfaces.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>03 · Logo Usage</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>05</span>
+    </div>
+  </section>
+
+  <!-- 06 — COLOR -->
+  <section class="page tall" data-screen-label="06 Color">
+    <div class="page-pad stack-40">
+      <div class="stack-12">
+        <div class="eyebrow" style="color:var(--stone);">04 · Color</div>
+        <h1 class="section">Quiet greens, <em>warm</em> ground.</h1>
+        <p class="lede">The palette is grounded in sage and evergreen, with warm ivory and stone for contrast. Secondary navy and tan offer flexibility for collateral and formal applications.</p>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Primary Palette</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="chip" style="background:var(--sage);"></div>
+          <div class="nm">Sage Green</div>
+          <div class="kv">
+            <div class="k">Hex</div><div>#859473</div>
+            <div class="k">RGB</div><div>133 · 148 · 115</div>
+            <div class="k">CMYK</div><div>42 · 25 · 50 · 6</div>
+            <div class="k">Pantone</div><div>5773 C</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="chip" style="background:var(--ivory);"></div>
+          <div class="nm">Warm Ivory</div>
+          <div class="kv">
+            <div class="k">Hex</div><div>#EFEAE1</div>
+            <div class="k">RGB</div><div>239 · 234 · 225</div>
+            <div class="k">CMYK</div><div>4 · 5 · 11 · 0</div>
+            <div class="k">Pantone</div><div>7527 C</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="chip" style="background:var(--evergreen);"></div>
+          <div class="nm">Dark Evergreen</div>
+          <div class="kv">
+            <div class="k">Hex</div><div>#2D3D32</div>
+            <div class="k">RGB</div><div>45 · 61 · 50</div>
+            <div class="k">CMYK</div><div>75 · 50 · 70 · 60</div>
+            <div class="k">Pantone</div><div>5535 C</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="chip" style="background:var(--stone);"></div>
+          <div class="nm">Stone</div>
+          <div class="kv">
+            <div class="k">Hex</div><div>#7B7B73</div>
+            <div class="k">RGB</div><div>123 · 123 · 115</div>
+            <div class="k">CMYK</div><div>52 · 42 · 50 · 18</div>
+            <div class="k">Pantone</div><div>Cool Gray 9 C</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Secondary &amp; Tints</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="grid-2" style="gap:40px;">
+        <div class="stack-16">
+          <div class="label">Sage — Tint Scale</div>
+          <div class="tints">
+            <div class="t" style="background:var(--sage-10);">10%</div>
+            <div class="t" style="background:var(--sage-30);">30%</div>
+            <div class="t" style="background:var(--sage-60);">60%</div>
+            <div class="t" style="background:var(--sage-80);">80%</div>
+            <div class="t" style="background:var(--sage); color:var(--ivory);">100%</div>
+          </div>
+          <p class="body">Use tints to create depth within sage-led layouts — surfaces, dividers, and quiet backgrounds. Avoid using tints below 30% for type.</p>
+        </div>
+
+        <div class="stack-16">
+          <div class="label">Secondary — Special Use</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="color-card">
+              <div class="chip" style="background:var(--navy); height: 130px;"></div>
+              <div class="nm" style="font-size:18px;">Midnight Navy</div>
+              <div class="kv"><div class="k">Hex</div><div>#1F2451</div></div>
+            </div>
+            <div class="color-card">
+              <div class="chip" style="background:var(--tan); height: 130px;"></div>
+              <div class="nm" style="font-size:18px;">Soft Tan</div>
+              <div class="kv"><div class="k">Hex</div><div>#D4B89C</div></div>
+            </div>
+          </div>
+          <p class="body">Reserved for secondary collateral: formal print, partner co-branding, packaging accents. Pair tan with navy as a closed system, separate from the primary sage palette.</p>
+        </div>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Usage Ratio</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="ratio-row">
+        <div style="background:var(--ivory); color:var(--evergreen);">60 · Ivory</div>
+        <div style="background:var(--sage); color:var(--ivory);">25 · Sage</div>
+        <div style="background:var(--evergreen); color:var(--ivory);">10 · Evergreen</div>
+        <div style="background:var(--stone); color:var(--ivory);">5</div>
+      </div>
+      <p class="body">A guide ratio for everyday use: ivory carries the page, sage carries the brand, evergreen anchors hierarchy, stone supports.</p>
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>04 · Color</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>06</span>
+    </div>
+  </section>
+
+  <!-- 07 — TYPOGRAPHY -->
+  <section class="page tall" data-screen-label="07 Typography">
+    <div class="page-pad stack-40">
+      <div class="stack-12">
+        <div class="eyebrow" style="color:var(--stone);">05 · Typography</div>
+        <h1 class="section">Set in <em>two</em> voices.</h1>
+        <p class="lede">A high-contrast serif carries identity and presence; a humanist sans handles the everyday work of reading. Together they hold the tone — refined, but never precious.</p>
+      </div>
+
+      <div class="type-hero">
+        <div class="big">Aa <em>Bb</em></div>
+        <div class="type-spec">
+          <div class="name">Cormorant Garamond</div>
+          <div class="row">Display · Serif</div>
+          <div class="row">Light 300 · Regular 400 · Italic</div>
+          <p class="body" style="margin-top:8px;">Used for titles, the wordmark, editorial moments and large numbers. Set in light or regular weight, with generous tracking on capitals (0.18–0.22em).</p>
+        </div>
+      </div>
+
+      <hr class="thin"/>
+
+      <div class="grid-2" style="gap:40px;">
+        <div class="stack-16">
+          <div class="label">Display — Cormorant Garamond</div>
+          <div class="alphabet">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            <span class="small">abcdefghijklmnopqrstuvwxyz</span>
+            <span class="num">1234567890 &nbsp; &amp; ? ! . , —</span>
+          </div>
+        </div>
+        <div class="stack-16">
+          <div class="label">Body — Source Sans 3</div>
+          <div class="alphabet" style="font-family: var(--sans); font-weight: 400;">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            <span class="small" style="font-family: var(--sans);">abcdefghijklmnopqrstuvwxyz</span>
+            <span class="num" style="font-family: var(--sans); font-weight: 500;">1234567890 &nbsp; &amp; ? ! . , —</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-title" style="color:var(--evergreen);">
+        <div class="line"></div>
+        <div class="t">Hierarchy &amp; Scale</div>
+        <div class="line"></div>
+      </div>
+
+      <div>
+        <div class="specimen-row"><div class="lab">Display · 64</div><div class="smp serif-300-64">Quiet attention to detail.</div></div>
+        <div class="specimen-row"><div class="lab">H1 · 40</div><div class="smp serif-400-40">A short book of standards.</div></div>
+        <div class="specimen-row"><div class="lab">H2 · Italic 28</div><div class="smp serif-i-400-28">Considered, complete, and warm.</div></div>
+        <div class="specimen-row"><div class="lab">Eyebrow · 13</div><div class="smp sans-500-13u">Sonder Operations · Brand</div></div>
+        <div class="specimen-row"><div class="lab">Lead · 20</div><div class="smp sans-700-20">Body lead-in for emphasis or call-out.</div></div>
+        <div class="specimen-row"><div class="lab">Body · 15</div><div class="smp sans-400-15">Body copy is set in Source Sans 3 Regular, with a line-height of 1.6 for comfortable reading at small and medium sizes.</div></div>
+        <div class="specimen-row"><div class="lab">Caption · 12</div><div class="smp sans-400-12">Captions and metadata sit at 12pt, with letter-spacing of 0.04em for legibility.</div></div>
+      </div>
+
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>05 · Typography</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>07</span>
+    </div>
+  </section>
+
+  <!-- 08 — APPLICATIONS -->
+  <section class="page tall" data-screen-label="08 Applications">
+    <div class="page-pad stack-24" style="height:100%;">
+      <div class="stack-12">
+        <div class="eyebrow" style="color:var(--stone);">06 · Applications</div>
+        <h1 class="section">The brand <em>in use</em>.</h1>
+        <p class="lede">Sample applications across stationery, social, and signage. Treat these as a tone reference — every new piece begins from the same palette, type, and clear-space principles.</p>
+      </div>
+
+      <div class="apps-grid">
+        <div class="col">
+          <div class="mock biz-card">
+            <div class="logo full ivory"></div>
+            <div class="name">Avery Whitman <span>Director of Operations</span></div>
+          </div>
+
+          <div class="mock social">
+            <div class="logo full ivory"></div>
+            <div class="title">"Quiet, considered work — done in full."</div>
+            <div class="tag">@SONDER.OPERATIONS</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="mock letterhead">
+            <div class="head">
+              <div class="logo icon light"></div>
+              <div class="right">
+                Sonder Operations<br>
+                hello@sonderops.com<br>
+                +1 555 0148
+              </div>
+            </div>
+            <hr class="thin"/>
+            <div class="body-lines">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span class="short"></span>
+              <span></span><span></span><span></span>
+              <span class="short"></span>
+            </div>
+            <div class="foot"><div class="logo full light"></div></div>
+          </div>
+
+          <div style="display:flex; gap: 16px;">
+            <div class="mock stamp" style="flex:1;">
+              <div class="logo icon light"></div>
+              <div class="est">EST · MMXXVI</div>
+            </div>
+            <div class="mock" style="flex:1; aspect-ratio:1; background: var(--sage); display:flex; align-items:center; justify-content:center; padding: 18%; box-sizing: border-box;">
+              <div class="logo icon ivory"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pagefoot" style="color:var(--evergreen);">
+      <span>06 · Applications</span>
+      <span>Sonder Operations · Brand Guidelines</span>
+      <span>08</span>
+    </div>
+  </section>
+
+  <!-- 09 — COLOPHON -->
+  <section class="page tall cover" data-screen-label="09 Colophon">
+    <div class="page-pad" style="display:flex; flex-direction:column; justify-content:space-between;">
+      <div style="display:flex; justify-content:space-between;">
+        <div class="eyebrow" style="opacity:0.85;">Colophon</div>
+        <div class="eyebrow" style="opacity:0.85;">Sonder Operations · 2026</div>
+      </div>
+
+      <div style="text-align:center; align-items:center; display:flex; flex-direction:column; gap: 28px;">
+        <div class="logo icon ivory" style="width:160px;"></div>
+        <div style="font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 40px; line-height: 1.25; max-width: 22ch;">
+          “The realization that each passerby has a life as vivid and complex as your own.”
+        </div>
+        <div class="eyebrow" style="opacity:0.85;">— Sonder · n.</div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between;">
+        <div class="eyebrow" style="opacity:0.85;">v1 · Internal Draft</div>
+        <div class="eyebrow" style="opacity:0.85;">End</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sonder Operations — Fractional Operations & Leadership</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sonder Operations is a fractional operations and leadership partner helping leaders unlock their full potential through facilitation, frameworks, and data-driven insight.">
+<script>document.documentElement.className += ' anim';</script>
+<template id="__bundler_thumbnail" data-bg-color="#859473">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#859473"/>
+    <g fill="none" stroke="#efeae1" stroke-width="10">
+      <circle cx="600" cy="360" r="120"/>
+      <path d="M600 240 a60 60 0 0 1 0 120 a60 60 0 0 0 0 120" stroke-width="9"/>
+    </g>
+    <text x="600" y="560" text-anchor="middle" fill="#efeae1" font-family="Georgia, serif" font-size="86" font-weight="300" letter-spacing="26">SONDER</text>
+    <text x="600" y="612" text-anchor="middle" fill="#efeae1" font-family="Georgia, serif" font-size="26" letter-spacing="18" opacity="0.75">OPERATIONS</text>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:      #859473;
+    --sage-80:   #a7b297;
+    --sage-30:   #e0e5d8;
+    --sage-10:   #f3f5ee;
+    --ivory:     #efeae1;
+    --paper:     #f8f5ee;
+    --evergreen: #2d3d32;
+    --evergreen-80: #4c5b50;
+    --stone:     #7b7b73;
+    --stone-40:  #c8c7c1;
+    --ink:       #2a2e29;
+    --rule:      rgba(45,61,50,0.16);
+    --rule-soft: rgba(45,61,50,0.09);
+
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    /* tweakable */
+    --display-scale: 1;
+    --section-pad: 132px;
+    --hero-bg: var(--sage);
+    --hero-fg: var(--ivory);
+    --hero-rule: rgba(239,234,225,0.42);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ============ Logo ============ */
+  .logo { background: no-repeat center / contain; display: block; }
+  .logo.full { background-image: url('assets/logo-full.png'); }
+  .logo.icon { background-image: url('assets/logo-icon.png'); }
+  .logo.ivory { filter: invert(1); }
+
+  /* ============ Type primitives ============ */
+  .eyebrow {
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .display em { font-style: italic; }
+  .serif-i {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+  }
+  p.body {
+    font-size: 16px;
+    line-height: 1.72;
+    color: var(--evergreen);
+    margin: 0;
+  }
+  .label {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .rule-line { height: 1px; background: var(--rule); border: 0; margin: 0; }
+
+  /* shared section frame */
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+  section.band { padding: var(--section-pad) 0; }
+
+  .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 16px; }
+  .sec-head .idx { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; color: var(--sage); }
+  .sec-head .eyebrow { color: var(--stone); }
+
+  /* ============ Buttons ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px; white-space: nowrap;
+    font-family: var(--sans); font-weight: 500;
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 16px 28px;
+    border: 1px solid currentColor;
+    background: transparent; color: var(--evergreen); cursor: pointer;
+    transition: background .45s ease, color .45s ease, transform .45s ease;
+  }
+  .btn .arrow { transition: transform .45s ease; }
+  .btn:hover { background: var(--evergreen); color: var(--ivory); }
+  .btn:hover .arrow { transform: translateX(5px); }
+  .btn.on-dark { color: var(--ivory); }
+  .btn.on-dark:hover { background: var(--ivory); color: var(--evergreen); }
+  .btn.solid { background: var(--evergreen); color: var(--ivory); border-color: var(--evergreen); }
+  .btn.solid:hover { background: transparent; color: var(--evergreen); }
+
+  /* ============ Nav ============ */
+  header.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 48px;
+    transition: background .5s ease, padding .5s ease, box-shadow .5s ease, color .5s ease;
+    color: var(--ivory);
+  }
+  header.nav .brand { display: flex; align-items: center; gap: 14px; }
+  header.nav .brand .logo.icon { width: 34px; height: 34px; transition: filter .5s ease; }
+  header.nav .brand .wm { line-height: 1; }
+  header.nav .brand .wm .n {
+    font-family: var(--serif); font-weight: 400; font-size: 21px;
+    letter-spacing: 0.34em; text-indent: 0.34em; display: block;
+  }
+  header.nav .brand .wm .s {
+    font-size: 8.5px; letter-spacing: 0.5em; text-indent: 0.5em;
+    text-transform: uppercase; opacity: 0.7; margin-top: 3px; display: block;
+  }
+  header.nav nav { display: flex; align-items: center; gap: 40px; }
+  header.nav nav a.link {
+    font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500;
+    position: relative; padding: 4px 0; opacity: 0.85;
+    transition: opacity .3s ease;
+  }
+  header.nav nav a.link::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: -2px; height: 1px;
+    background: currentColor; transition: right .4s ease;
+  }
+  header.nav nav a.link:hover { opacity: 1; }
+  header.nav nav a.link:hover::after { right: 0; }
+  header.nav .btn { padding: 12px 22px; font-size: 11px; }
+
+  /* scrolled state */
+  header.nav.scrolled {
+    background: rgba(248,245,238,0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 14px 48px;
+    box-shadow: 0 1px 0 var(--rule);
+    color: var(--evergreen);
+  }
+  header.nav.scrolled .brand .logo.icon { filter: none; }
+  header.nav.scrolled .btn { color: var(--evergreen); border-color: var(--evergreen); }
+  header.nav.scrolled .btn:hover { background: var(--evergreen); color: var(--ivory); }
+
+  .nav-toggle { display: none; }
+
+  /* ============ Hero ============ */
+  .hero {
+    min-height: 100vh;
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    position: relative;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .hero .hero-inner {
+    flex: 1;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    max-width: 1240px; width: 100%; margin: 0 auto;
+    padding: 132px 48px 56px;
+  }
+  .hero .htop {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.82;
+  }
+  .hero .hmid {
+    align-self: center;
+    padding: 40px 0;
+  }
+  .hero .kicker {
+    font-size: 12px; letter-spacing: 0.42em; text-transform: uppercase;
+    margin-bottom: 30px; opacity: 0.9;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero .kicker::before { content: ""; width: 46px; height: 1px; background: currentColor; opacity: 0.6; }
+  .hero h1.display {
+    font-size: calc(140px * var(--display-scale));
+    line-height: 0.92;
+  }
+  .hero h1.display .line2 { padding-left: 0.9em; }
+  .hero .sub {
+    margin-top: 40px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+  }
+  .hero .sub p {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: 24px; line-height: 1.45; max-width: 30ch; margin: 0; opacity: 0.95;
+  }
+  .hero .hbot {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--hero-rule);
+    padding-top: 22px;
+    font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; opacity: 0.82;
+  }
+  .hero .hbot .socials { display: flex; gap: 26px; }
+  .hero .hbot a { opacity: 0.85; transition: opacity .3s; }
+  .hero .hbot a:hover { opacity: 1; }
+
+  .scroll-cue {
+    position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+    font-size: 9.5px; letter-spacing: 0.4em; text-transform: uppercase; opacity: 0.7;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .scroll-cue .dash { width: 1px; height: 38px; background: currentColor; animation: cue 2.4s ease-in-out infinite; transform-origin: top; }
+  @keyframes cue { 0%,100% { transform: scaleY(0.4); opacity: 0.4; } 50% { transform: scaleY(1); opacity: 1; } }
+
+  /* faint oversize mark in hero */
+  .hero .ghost {
+    position: absolute; right: -10%; top: 50%; transform: translateY(-50%);
+    width: 720px; height: 720px; opacity: 0.07; pointer-events: none;
+    background: url('assets/logo-icon.png') no-repeat center / contain;
+    filter: invert(1);
+  }
+
+  /* ============ Intro statement ============ */
+  .statement { background: var(--paper); }
+  .statement .big {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(28px, 4vw, 52px); line-height: 1.28; letter-spacing: -0.005em;
+    color: var(--evergreen); max-width: 24ch; margin: 0;
+  }
+  .statement .big em { font-style: italic; color: var(--sage); }
+  .statement .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .statement .aside { display: flex; flex-direction: column; gap: 24px; padding-top: 8px; }
+
+  /* ============ Meet Sonder ============ */
+  .meet { background: var(--ivory); }
+  .meet .grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 80px; align-items: center; }
+  .meet .portrait {
+    aspect-ratio: 0.82 / 1;
+    background: var(--sage-10);
+    border: 1px solid var(--rule-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .meet .portrait img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+    display: block;
+  }
+  .meet .portrait .corner {
+    position: absolute; z-index: 2;
+    font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ivory);
+    bottom: 20px; left: 22px;
+    text-shadow: 0 1px 12px rgba(45,61,50,0.55);
+  }
+  .meet h2.display { font-size: clamp(40px, 5vw, 64px); margin-bottom: 8px; }
+  .meet .founder-line { font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--sage); margin-bottom: 28px; }
+  .meet .lead { font-size: 17px; line-height: 1.7; color: var(--evergreen); margin: 0 0 20px; }
+  .meet .sig {
+    margin-top: 34px; display: flex; align-items: center; gap: 16px;
+  }
+  .meet .sig .nm { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--evergreen); }
+  .meet .sig .role { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone); }
+
+  /* ============ Approach ============ */
+  .approach { background: var(--evergreen); color: var(--ivory); }
+  .approach .sec-head .eyebrow { color: var(--sage-80); }
+  .approach .lede {
+    font-family: var(--serif); font-weight: 300; font-size: clamp(26px, 3.4vw, 40px);
+    line-height: 1.22; max-width: 20ch; margin: 0 0 64px; color: var(--ivory);
+  }
+  .approach .lede em { font-style: italic; color: var(--sage-80); }
+  .approach .pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid rgba(239,234,225,0.18); }
+  .approach .pillar {
+    padding: 40px 36px 44px;
+    border-bottom: 1px solid rgba(239,234,225,0.18);
+    position: relative;
+    transition: background .5s ease;
+  }
+  .approach .pillar:nth-child(odd) { border-right: 1px solid rgba(239,234,225,0.18); }
+  .approach .pillar:hover { background: rgba(239,234,225,0.05); }
+  .approach .pillar .num { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--sage-80); margin-bottom: 22px; }
+  .approach .pillar h3 { font-family: var(--serif); font-weight: 300; font-size: 32px; margin: 0 0 14px; letter-spacing: -0.005em; }
+  .approach .pillar p { font-size: 14.5px; line-height: 1.65; color: rgba(239,234,225,0.78); margin: 0; max-width: 42ch; }
+
+  /* ============ Impact ============ */
+  .impact { background: var(--paper); }
+  .impact .grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 64px; align-items: center; }
+  .impact .books { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+  .impact .books .book:nth-child(2) { margin-top: 30px; }
+  .impact .books .book:nth-child(3) { margin-top: 60px; }
+  .impact .book {
+    background: var(--paper);
+    border: 1px solid var(--rule-soft);
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(45,61,50,0.14);
+    transition: transform .5s ease, box-shadow .5s ease;
+  }
+  .impact .book img { width: 100%; height: auto; display: block; }
+  .impact .book:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(45,61,50,0.22); }
+  .impact h2.display { font-size: clamp(38px, 4.6vw, 58px); margin-bottom: 22px; }
+  .impact .copy p { margin-bottom: 18px; }
+
+  /* ============ Featured ============ */
+  .featured { background: var(--ivory); padding: 84px 0; }
+  .featured .ft-head { text-align: center; margin-bottom: 48px; }
+  .featured .ft-head .label { color: var(--stone); }
+  .featured .marquee { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 26px 54px; max-width: 1040px; margin: 0 auto; }
+  .featured .marquee .name {
+    font-family: var(--serif); font-weight: 400; font-size: 23px; color: var(--evergreen);
+    opacity: 0.5; transition: opacity .4s ease; letter-spacing: 0.01em; line-height: 1.2; white-space: nowrap;
+  }
+  .featured .marquee .name:hover { opacity: 1; }
+  .featured .marquee .name .small { font-family: var(--sans); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; display: block; text-align: center; }
+
+  /* ============ Contact ============ */
+  .contact { background: var(--sage); color: var(--ivory); }
+  .contact .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .contact h2.display { font-size: clamp(44px, 5.6vw, 76px); margin-bottom: 24px; }
+  .contact .intro { font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.5; max-width: 26ch; opacity: 0.95; margin: 0 0 40px; }
+  .contact .detail { margin-bottom: 26px; }
+  .contact .detail .k { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.7; margin-bottom: 6px; }
+  .contact .detail .v { font-family: var(--serif); font-size: 22px; }
+  .contact .detail .v a { border-bottom: 1px solid rgba(239,234,225,0.4); padding-bottom: 2px; transition: border-color .3s; }
+  .contact .detail .v a:hover { border-color: var(--ivory); }
+
+  form.cform { display: flex; flex-direction: column; gap: 22px; }
+  form.cform .field { display: flex; flex-direction: column; gap: 8px; }
+  form.cform label { font-size: 10.5px; letter-spacing: 0.26em; text-transform: uppercase; opacity: 0.82; }
+  form.cform input, form.cform textarea {
+    background: transparent; border: 0; border-bottom: 1px solid rgba(239,234,225,0.4);
+    color: var(--ivory); font-family: var(--sans); font-size: 16px; padding: 10px 0;
+    transition: border-color .35s ease;
+  }
+  form.cform input::placeholder, form.cform textarea::placeholder { color: rgba(239,234,225,0.5); }
+  form.cform input:focus, form.cform textarea:focus { outline: none; border-color: var(--ivory); }
+  form.cform textarea { resize: vertical; min-height: 70px; }
+  form.cform .btn { align-self: flex-start; margin-top: 10px; }
+
+  /* ============ Footer ============ */
+  footer.foot { background: var(--evergreen); color: var(--ivory); padding: 72px 0 40px; }
+  footer.foot .grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; align-items: start; }
+  footer.foot .brand-col .logo.icon { width: 46px; height: 46px; margin-bottom: 22px; }
+  footer.foot .brand-col .n { font-family: var(--serif); font-size: 24px; letter-spacing: 0.3em; text-indent: 0.3em; }
+  footer.foot .brand-col .s { font-size: 9px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; margin-top: 6px; }
+  footer.foot .brand-col p { font-family: var(--serif); font-style: italic; font-size: 17px; opacity: 0.75; margin: 24px 0 0; max-width: 30ch; line-height: 1.5; }
+  footer.foot .col h4 { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.6; margin: 0 0 20px; font-weight: 500; }
+  footer.foot .col a { display: block; font-size: 14px; margin-bottom: 12px; opacity: 0.85; transition: opacity .3s; }
+  footer.foot .col a:hover { opacity: 1; }
+  footer.foot .newsletter { display: flex; gap: 0; margin-top: 14px; border-bottom: 1px solid rgba(239,234,225,0.32); }
+  footer.foot .newsletter input { flex: 1; background: transparent; border: 0; color: var(--ivory); font-family: var(--sans); font-size: 14px; padding: 8px 0; }
+  footer.foot .newsletter input:focus { outline: none; }
+  footer.foot .newsletter input::placeholder { color: rgba(239,234,225,0.5); }
+  footer.foot .newsletter button { background: transparent; border: 0; color: var(--ivory); cursor: pointer; font-size: 18px; padding: 0 4px; }
+  footer.foot .foot-bottom {
+    border-top: 1px solid rgba(239,234,225,0.18); margin-top: 56px; padding-top: 26px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.62;
+  }
+  footer.foot .foot-bottom .est { font-family: var(--serif); font-style: italic; letter-spacing: 0.18em; text-transform: none; font-size: 14px; }
+
+  /* ============ Reveal animations ============ */
+  @media (prefers-reduced-motion: no-preference) {
+    /* transform-only reveals — content is always fully opaque, just slides up */
+    .anim .reveal { transform: translateY(30px); transition: transform 1.05s cubic-bezier(.2,.75,.2,1); }
+    .anim .reveal.in { transform: none; }
+    .anim .hero .he { transform: translateY(26px); transition: transform 1.05s cubic-bezier(.2,.75,.2,1); }
+    .anim .hero .he.in { transform: none; }
+  }
+
+  /* ============ Tweaks panel ============ */
+  #tweaks {
+    position: fixed; right: 22px; bottom: 22px; z-index: 200;
+    width: 290px; background: var(--paper); color: var(--evergreen);
+    border: 1px solid var(--rule); box-shadow: 0 24px 60px rgba(45,61,50,0.28);
+    font-family: var(--sans); display: none; overflow: hidden;
+  }
+  #tweaks.open { display: block; }
+  #tweaks .tk-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--rule); cursor: grab; }
+  #tweaks .tk-head .t { font-family: var(--serif); font-style: italic; font-size: 19px; }
+  #tweaks .tk-head .x { cursor: pointer; font-size: 18px; line-height: 1; opacity: 0.5; background: none; border: 0; }
+  #tweaks .tk-head .x:hover { opacity: 1; }
+  #tweaks .tk-body { padding: 18px; display: flex; flex-direction: column; gap: 22px; max-height: 70vh; overflow-y: auto; }
+  #tweaks .tk-sec .lbl { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone); margin-bottom: 10px; }
+  #tweaks .seg { display: flex; border: 1px solid var(--rule); }
+  #tweaks .seg button { flex: 1; background: transparent; border: 0; padding: 9px 4px; font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; color: var(--stone); transition: background .25s, color .25s; }
+  #tweaks .seg button + button { border-left: 1px solid var(--rule); }
+  #tweaks .seg button.active { background: var(--evergreen); color: var(--ivory); }
+  #tweaks .swatches { display: flex; gap: 10px; }
+  #tweaks .swatches button { width: 38px; height: 38px; border: 1px solid var(--rule); cursor: pointer; position: relative; padding: 0; }
+  #tweaks .swatches button.active { outline: 2px solid var(--evergreen); outline-offset: 2px; }
+  #tweaks input[type=range] { width: 100%; accent-color: var(--sage); }
+  #tweaks .rngval { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--sage); }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 26px; }
+    :root { --section-pad: 84px; }
+    header.nav { padding: 16px 26px; }
+    header.nav.scrolled { padding: 12px 26px; }
+    header.nav nav { display: none; position: fixed; top: 0; right: 0; bottom: 0; width: 78%; max-width: 340px;
+      background: var(--evergreen); color: var(--ivory); flex-direction: column; align-items: flex-start;
+      justify-content: center; gap: 30px; padding: 48px; transform: translateX(100%); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+    header.nav nav.open { display: flex; transform: none; }
+    header.nav nav a.link { font-size: 14px; opacity: 1; }
+    header.nav nav .btn { color: var(--ivory); border-color: var(--ivory); }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 6px; z-index: 90; }
+    .nav-toggle span { width: 24px; height: 1.5px; background: currentColor; transition: transform .4s, opacity .4s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .hero .hero-inner { padding: 120px 26px 44px; }
+    .hero h1.display { font-size: calc(74px * var(--display-scale)); }
+    .hero .sub { grid-template-columns: 1fr; gap: 28px; }
+    .hero .ghost { width: 420px; height: 420px; right: -25%; }
+    .statement .grid, .meet .grid, .impact .grid, .contact .grid { grid-template-columns: 1fr; gap: 44px; }
+    .approach .pillars { grid-template-columns: 1fr; }
+    .approach .pillar:nth-child(odd) { border-right: 0; }
+    footer.foot .grid { grid-template-columns: 1fr; gap: 40px; }
+    .meet .grid { grid-template-columns: 1fr; }
+    .meet .portrait { max-width: 380px; }
+    #tweaks { left: 14px; right: 14px; width: auto; }
+  }
+  @media (max-width: 560px) {
+    .hero h1.display { font-size: calc(58px * var(--display-scale)); }
+    .impact .books { grid-template-columns: 1fr; max-width: 240px; }
+    .impact .books .book:nth-child(2), .impact .books .book:nth-child(3) { margin-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Sonder Operations home">
+    <span class="logo icon ivory"></span>
+    <span class="wm"><span class="n">SONDER</span><span class="s">Operations</span></span>
+  </a>
+  <nav id="navlinks">
+    <a class="link" href="#approach">Approach</a>
+    <a class="link" href="#about">About</a>
+    <a class="link" href="#impact">Impact</a>
+    <a class="link" href="#featured">Recognition</a>
+    <a class="btn on-dark" href="#contact">Begin Your Transformation <span class="arrow">→</span></a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="ghost"></div>
+  <div class="hero-inner">
+    <div class="htop he d1">
+      <span>Fractional Operations &amp; Leadership</span>
+      <span>A Sonder Operations Practice</span>
+    </div>
+    <div class="hmid">
+      <div class="kicker he d1">Unlock Your Full Potential With</div>
+      <h1 class="display he d2">Sonder<br><span class="line2"><em>Operations</em></span></h1>
+      <div class="sub he d3">
+        <p>A fractional partner for leaders who want to operate with clarity, intention, and lasting confidence.</p>
+        <a class="btn on-dark" href="#contact">Begin Your Transformation <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <div class="hbot he d4">
+      <span>Idaho · Working Everywhere</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/sonder-ops" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/sonderops/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61556970833681" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="dash"></span></div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="band statement">
+  <div class="wrap">
+    <div class="grid">
+      <p class="big reveal">More than a fractional consulting firm — we are your dedicated <em>partners</em> in unlocking your business's full potential.</p>
+      <div class="aside reveal">
+        <hr class="rule-line">
+        <p class="body">We believe in the transformative power of authentic leadership. Our commitment is to help you build a culture of innovation and reach sustainable success — on your own terms, in your own way.</p>
+        <p class="body">Every engagement begins by listening closely to the specific leadership and operational challenges in front of you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET SONDER / ABOUT ============ -->
+<section class="band meet" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="portrait reveal">
+        <img src="assets/founder-savana.jpg" alt="Savana Maxon, Founder of Sonder Operations">
+        <span class="corner">Savana</span>
+      </div>
+      <div class="reveal">
+        <div class="sec-head"><span class="idx">01</span><span class="eyebrow">Meet Sonder</span></div>
+        <h2 class="display">A practice built<br>to <em>empower</em> leaders.</h2>
+        <p class="founder-line">Founded by Savana Maxon</p>
+        <p class="lead">Our founder, Savana, established Sonder Operations to empower leaders to excel in their own unique ways. We're not here to hand you a template — we're here to be a steady partner as you grow.</p>
+        <p class="body">Drawing on years inside operations and leadership, Savana built Sonder as a place where strategy meets humanity: rigorous frameworks delivered with warmth, and decisions grounded in both data and trust.</p>
+        <div class="sig">
+          <span class="nm">Savana Maxon</span>
+          <span class="role">Founder &amp; Principal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPROACH ============ -->
+<section class="band approach" id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="idx">02</span><span class="eyebrow">Our Approach</span></div>
+    <p class="lede reveal">We address your leadership and operational challenges through <em>four practices</em>, woven together.</p>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="num">i</div>
+        <h3>Facilitation</h3>
+        <p>Guiding productive discussions and workshops that foster genuine collaboration and unlock the best thinking already in the room.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">ii</div>
+        <h3>Frameworks</h3>
+        <p>Implementing proven models and strategies to streamline processes, clarify ownership, and enhance day-to-day efficiency.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">iii</div>
+        <h3>Data-Driven Insights</h3>
+        <p>Leveraging analytics to inform decisions and track progress — so momentum is measured, not assumed.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">iv</div>
+        <h3>Continuous Support</h3>
+        <p>Providing ongoing advice and resources to ensure change takes root and success is lasting, not momentary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACT ============ -->
+<section class="band impact" id="impact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="copy reveal">
+        <div class="sec-head"><span class="idx">03</span><span class="eyebrow">Our Impact</span></div>
+        <h2 class="display">Ideas worth<br><em>returning to.</em></h2>
+        <p class="body">Beyond client engagements, Sonder shares thought leadership and published work on operations, leadership, and building cultures where people do their best work.</p>
+        <p class="body">Subscribe for exclusive insights, thought-leadership content, and updates on future projects and impact.</p>
+        <a class="btn solid" href="#contact" style="margin-top:14px;">Get Updates <span class="arrow">→</span></a>
+      </div>
+      <div class="books reveal">
+        <div class="book"><img src="assets/book-tenacious.png" alt="Lead Like a Woman: Tenacious — compiled by Andrea Heuston"></div>
+        <div class="book"><img src="assets/book-elevate.png" alt="Elevate &amp; Empower — Insights on Personal Growth, Resilience, and Transformation"></div>
+        <div class="book"><img src="assets/book-grateful.jpeg" alt="Lead Like a Woman: Grateful — compiled by Andrea Heuston"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED ============ -->
+<section class="featured" id="featured">
+  <div class="wrap">
+    <div class="ft-head reveal"><span class="label">Featured &amp; Recognized By</span></div>
+    <div class="marquee reveal">
+      <span class="name">Idaho Business Review</span>
+      <span class="name">WomenTech Network</span>
+      <span class="name">Authority Magazine</span>
+      <span class="name">Grow with Google</span>
+      <span class="name">Lean In</span>
+      <span class="name">The Mom Project</span>
+      <span class="name">GoLead Idaho</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <div class="sec-head"><span class="idx" style="color:var(--ivory);opacity:.7;">04</span><span class="eyebrow" style="color:var(--ivory);opacity:.8;">Get In Touch</span></div>
+        <h2 class="display">Let's begin.</h2>
+        <p class="intro">Tell us where you are and where you'd like to go. We'll be in touch soon.</p>
+        <div class="detail">
+          <div class="k">Email</div>
+          <div class="v"><a href="mailto:info@sonderoperations.com">info@sonderoperations.com</a></div>
+        </div>
+        <div class="detail">
+          <div class="k">Follow</div>
+          <div class="v" style="display:flex;gap:24px;font-size:15px;letter-spacing:0.06em;">
+            <a href="https://www.linkedin.com/company/sonder-ops" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/sonderops/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.facebook.com/profile.php?id=61556970833681" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <form class="cform reveal" onsubmit="return formSubmit(event)">
+        <div class="field"><label for="f-name">Full Name</label><input id="f-name" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@company.com" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" placeholder="Optional"></div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" placeholder="Type your message here..." rows="3"></textarea></div>
+        <button class="btn on-dark" type="submit" id="sendBtn">Send Message <span class="arrow">→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="grid">
+      <div class="brand-col">
+        <span class="logo icon ivory"></span>
+        <div class="n">SONDER</div>
+        <div class="s">Operations</div>
+        <p>Helping leaders operate with clarity, intention, and lasting confidence.</p>
+      </div>
+      <div class="col">
+        <h4>Explore</h4>
+        <a href="#about">About</a>
+        <a href="#approach">Approach</a>
+        <a href="#impact">Impact</a>
+        <a href="#featured">Recognition</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="col">
+        <h4>Stay Connected</h4>
+        <a href="mailto:info@sonderoperations.com">info@sonderoperations.com</a>
+        <p style="font-size:13px;opacity:0.7;margin:8px 0 0;line-height:1.5;">Exclusive insights &amp; thought leadership, now and then.</p>
+        <form class="newsletter" onsubmit="return newsletterSubmit(event)">
+          <input type="email" placeholder="Enter your email" required aria-label="Email">
+          <button type="submit" aria-label="Subscribe">→</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Sonder Operations</span>
+      <span>Brand &amp; Site · Vol. 01</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ TWEAKS ============ -->
+<div id="tweaks">
+  <div class="tk-head" id="tkHead">
+    <span class="t">Tweaks</span>
+    <button class="x" id="tkClose" aria-label="Close">✕</button>
+  </div>
+  <div class="tk-body">
+    <div class="tk-sec">
+      <div class="lbl">Hero Background</div>
+      <div class="swatches" id="tkHero">
+        <button data-val="sage" style="background:#859473;" title="Sage"></button>
+        <button data-val="evergreen" style="background:#2d3d32;" title="Evergreen"></button>
+        <button data-val="ivory" style="background:#efeae1;" title="Ivory"></button>
+      </div>
+    </div>
+    <div class="tk-sec">
+      <div class="lbl">Display Scale · <span class="rngval" id="tkScaleVal">1.00×</span></div>
+      <input type="range" id="tkScale" min="0.8" max="1.25" step="0.01" value="1">
+    </div>
+    <div class="tk-sec">
+      <div class="lbl">Section Rhythm</div>
+      <div class="seg" id="tkDensity">
+        <button data-val="compact">Compact</button>
+        <button data-val="regular">Regular</button>
+        <button data-val="spacious">Spacious</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ---- Tweak defaults (host-persisted) ---- */
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "heroBg": "sage",
+    "displayScale": 1,
+    "density": "regular"
+  }/*EDITMODE-END*/;
+
+  const HERO_MAP = {
+    sage:      { bg: "var(--sage)",      fg: "var(--ivory)",     rule: "rgba(239,234,225,0.42)", ghost: "invert(1)" },
+    evergreen: { bg: "var(--evergreen)", fg: "var(--ivory)",     rule: "rgba(239,234,225,0.30)", ghost: "invert(1)" },
+    ivory:     { bg: "var(--ivory)",     fg: "var(--evergreen)", rule: "rgba(45,61,50,0.20)",    ghost: "none" }
+  };
+  const DENSITY_MAP = { compact: "92px", regular: "132px", spacious: "176px" };
+
+  function applyTweaks() {
+    const root = document.documentElement.style;
+    const h = HERO_MAP[TWEAKS.heroBg] || HERO_MAP.sage;
+    root.setProperty('--hero-bg', h.bg);
+    root.setProperty('--hero-fg', h.fg);
+    root.setProperty('--hero-rule', h.rule);
+    const ghost = document.querySelector('.hero .ghost');
+    if (ghost) ghost.style.filter = h.ghost;
+    root.setProperty('--display-scale', TWEAKS.displayScale);
+    root.setProperty('--section-pad', DENSITY_MAP[TWEAKS.density] || DENSITY_MAP.regular);
+    // sync controls
+    document.querySelectorAll('#tkHero button').forEach(b => b.classList.toggle('active', b.dataset.val === TWEAKS.heroBg));
+    document.querySelectorAll('#tkDensity button').forEach(b => b.classList.toggle('active', b.dataset.val === TWEAKS.density));
+    const sc = document.getElementById('tkScale'); if (sc) sc.value = TWEAKS.displayScale;
+    const scv = document.getElementById('tkScaleVal'); if (scv) scv.textContent = Number(TWEAKS.displayScale).toFixed(2) + '×';
+  }
+  function persist(edits) { try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*'); } catch(e){} }
+
+  /* ---- Hero entrance ---- */
+  (function(){
+    const els = document.querySelectorAll('.hero .he');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      els.forEach((el, i) => { el.style.transitionDelay = (0.12 + i * 0.16) + 's'; el.classList.add('in'); });
+    }));
+  })();
+
+  /* ---- Nav scroll state ---- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => { nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.78); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---- Mobile nav ---- */
+  const navToggle = document.getElementById('navToggle');
+  const navlinks = document.getElementById('navlinks');
+  navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navlinks.classList.toggle('open'); });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { navToggle.classList.remove('open'); navlinks.classList.remove('open'); }));
+
+  /* ---- Reveal on scroll ---- */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const sibs = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+    el.style.transitionDelay = (sibs.indexOf(el) * 0.08) + 's';
+    io.observe(el);
+  });
+  /* safety: never leave content hidden */
+  setTimeout(() => { document.querySelectorAll('.reveal:not(.in)').forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+  }); }, 2500);
+
+  /* ---- Forms (demo) ---- */
+  function formSubmit(e) {
+    e.preventDefault();
+    const b = document.getElementById('sendBtn');
+    b.innerHTML = "We'll Be in Touch Soon ✓";
+    b.disabled = true; b.style.opacity = '0.7';
+    return false;
+  }
+  function newsletterSubmit(e) {
+    e.preventDefault();
+    const inp = e.target.querySelector('input');
+    inp.value = ''; inp.placeholder = 'Thanks for subscribing ✓';
+    return false;
+  }
+
+  /* ---- Tweaks panel ---- */
+  const panel = document.getElementById('tweaks');
+  window.addEventListener('message', (ev) => {
+    const t = ev.data && ev.data.type;
+    if (t === '__activate_edit_mode') panel.classList.add('open');
+    else if (t === '__deactivate_edit_mode') panel.classList.remove('open');
+  });
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+  document.getElementById('tkClose').addEventListener('click', () => {
+    panel.classList.remove('open');
+    try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch(e){}
+  });
+  document.getElementById('tkHero').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    TWEAKS.heroBg = b.dataset.val; applyTweaks(); persist({ heroBg: TWEAKS.heroBg });
+  });
+  document.getElementById('tkDensity').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    TWEAKS.density = b.dataset.val; applyTweaks(); persist({ density: TWEAKS.density });
+  });
+  const scale = document.getElementById('tkScale');
+  scale.addEventListener('input', () => {
+    TWEAKS.displayScale = parseFloat(scale.value);
+    document.getElementById('tkScaleVal').textContent = TWEAKS.displayScale.toFixed(2) + '×';
+    document.documentElement.style.setProperty('--display-scale', TWEAKS.displayScale);
+  });
+  scale.addEventListener('change', () => persist({ displayScale: TWEAKS.displayScale }));
+
+  /* draggable panel */
+  (function(){
+    const head = document.getElementById('tkHead'); let sx, sy, ox, oy, drag = false;
+    head.addEventListener('mousedown', (e) => {
+      if (e.target.id === 'tkClose') return;
+      drag = true; const r = panel.getBoundingClientRect();
+      ox = r.left; oy = r.top; sx = e.clientX; sy = e.clientY;
+      panel.style.right = 'auto'; panel.style.bottom = 'auto'; panel.style.left = ox + 'px'; panel.style.top = oy + 'px';
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!drag) return;
+      panel.style.left = (ox + e.clientX - sx) + 'px';
+      panel.style.top = (oy + e.clientY - sy) + 'px';
+    });
+    window.addEventListener('mouseup', () => drag = false);
+  })();
+
+  applyTweaks();
+</script>
+</body>
+</html>
